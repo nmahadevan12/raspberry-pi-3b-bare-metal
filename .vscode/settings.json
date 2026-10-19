@@ -1,0 +1,78 @@
+{
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 4,
+  "[makefile]": {
+    "editor.insertSpaces": false
+  },
+  "actionButtons": {
+    "defaultColor": "#ffffff",
+    "loadNpmCommands": false,
+    "reloadButton": "$(refresh)",
+    "commands": [
+      {
+        "name": "$(tools) Build",
+        "tooltip": "make",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Build"
+        ]
+      },
+      {
+        "name": "$(zap) Flash",
+        "tooltip": "Build and copy to SD card",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Flash to SD"
+        ]
+      },
+      {
+        "name": "$(debug-eject) Flash+Eject",
+        "tooltip": "Build, copy to SD card, eject",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Flash and Eject"
+        ]
+      },
+      {
+        "name": "$(play) QEMU",
+        "tooltip": "Run in QEMU",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Run in QEMU"
+        ]
+      },
+      {
+        "name": "$(file-binary) Disasm",
+        "tooltip": "Disassemble kernel8.elf",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Disassemble"
+        ]
+      },
+      {
+        "name": "$(list-flat) Listing",
+        "tooltip": "Write build/kernel8.lst and open it",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Listing (.lst)"
+        ]
+      },
+      {
+        "name": "$(trash) Clean",
+        "tooltip": "make clean",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Clean"
+        ]
+      }
+    ]
+  }
+}
