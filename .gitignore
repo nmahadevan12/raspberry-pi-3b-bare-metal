@@ -2,7 +2,7 @@
 **/build/
 *.o
 *.d
-*.elf
-*.img
 *.map
 *.lst
+blinky/*.elf
+blinky/*.img
