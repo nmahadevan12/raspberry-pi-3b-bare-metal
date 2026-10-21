@@ -41,9 +41,6 @@
 #define SPACE_AVAILABLE (1 << 1)
 #define PUD             ((1 << 1) | (1 << 0))
 
-// GLOBAL VARIABLES
-char message[] = "Hello Nikhil";
-
 void miniUartSetup(void)
 {
     AUX_ENABLES |= MINI_UART;                       // enables mini UART peripherals
@@ -87,14 +84,12 @@ void miniUartTransmit(uint8_t data)
     AUX_MU_IO_REG = data;                           // puts data to transmit in bits [7:0]
 }
 
-void miniUartPointer()
+void miniUartPointer(char *index)
 {
-    uint8_t i = 0;                                  // index counter
-
-    while (message[i] != '\0')                      // while there are characters, keep sending to transmit function
+    while (*index != '\0')                          // while there are characters, keep sending to transmit function
     {
-        miniUartTransmit(message[i]);
-        i++;
+        miniUartTransmit(*index);
+        index++;
     }
 }
 
@@ -102,10 +97,11 @@ int main(void)
 {
     miniUartSetup();                                // calls mini Uart setup function
     volatile uint32_t delay;
+    char message[] = "Hello Nikhil";
 
     while (1)
     {
-        miniUartPointer();                          // calls mini Uart pointer function
+        miniUartPointer(message);                   // calls mini Uart pointer function
         for (delay = 0; delay < 1000000; delay++);  // delay
     }
 }
