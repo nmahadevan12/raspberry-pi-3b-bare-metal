@@ -6,3 +6,6 @@
 *.lst
 blinky/*.elf
 blinky/*.img
+
+old code/
+.vscode/

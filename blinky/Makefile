@@ -11,10 +11,14 @@
 #   make qemu       run in QEMU (mini UART goes to this terminal)
 #   make qemu-gdb   run in QEMU, paused, waiting for gdb on port 1234
 #   make clean      delete build/
+#   make monitor    serial monitor for the Pi's UART (needs: pip install pyserial)
+#   make monitor-hex  same, as a hex + ASCII dump
 #   make help       print this command list
 #
 # SD card path is /Volumes/3B by default. Override per command:
 #   make flash SD=/Volumes/OTHERNAME
+# Extra options for the monitor (see: python3 monitor.py --help):
+#   make monitor ARGS="--timestamps --log run1.txt"
 
 CROSS    ?= aarch64-elf-
 CC       := $(CROSS)gcc
@@ -25,6 +29,8 @@ NM       := $(CROSS)nm
 SIZE     := $(CROSS)size
 
 SD       ?= /Volumes/3B
+PYTHON   ?= python3
+ARGS     ?=
 FIRMWARE := ../sdfiles
 BUILD    := build
 
@@ -39,7 +45,7 @@ S_SRCS   := $(wildcard *.S)
 OBJS     := $(C_SRCS:%.c=$(BUILD)/%.o) $(S_SRCS:%.S=$(BUILD)/%.o)
 DEPS     := $(OBJS:.o=.d)
 
-.PHONY: all clean dump syms list map flash deploy sdinit eject qemu qemu-gdb help
+.PHONY: all clean dump syms list map flash deploy sdinit eject qemu qemu-gdb monitor monitor-hex help
 
 all: $(BUILD)/kernel8.img
 	@$(SIZE) $(BUILD)/kernel8.elf
@@ -99,6 +105,12 @@ qemu: $(BUILD)/kernel8.img
 
 qemu-gdb: $(BUILD)/kernel8.img
 	qemu-system-aarch64 -M raspi3b -kernel $(BUILD)/kernel8.img -serial null -serial stdio -S -gdb tcp::1234
+
+monitor:
+	$(PYTHON) monitor.py $(ARGS)
+
+monitor-hex:
+	$(PYTHON) monitor.py --hex $(ARGS)
 
 clean:
 	rm -rf $(BUILD)
