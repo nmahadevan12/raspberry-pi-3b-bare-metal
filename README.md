@@ -58,6 +58,7 @@ make qemu-gdb   # paused, GDB on port 1234
 |------|---------|
 | `blinky/` | Kernel sources (`boot.S`, `main.c`), linker script, Makefile, serial monitor |
 | `sdfiles/` | Pi firmware (`bootcode.bin`, `start.elf`, `fixup.dat`) + `config.txt` |
+| `additional-code/` | Earlier GPIO 17 blink example + oscilloscope captures |
 
 ## What the firmware does
 
