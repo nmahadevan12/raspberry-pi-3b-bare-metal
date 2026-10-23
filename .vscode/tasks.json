@@ -122,6 +122,28 @@
         "panel": "shared",
         "clear": true
       }
+    },
+    {
+      "label": "Serial Monitor",
+      "type": "shell",
+      "command": "make monitor",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      }
+    },
+    {
+      "label": "Serial Monitor (hex)",
+      "type": "shell",
+      "command": "make monitor-hex",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      }
     }
   ]
 }

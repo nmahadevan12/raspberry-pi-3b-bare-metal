@@ -97,7 +97,7 @@ int main(void)
 {
     miniUartSetup();                                // calls mini Uart setup function
     volatile uint32_t delay;
-    char message[] = "Hello Nikhil";
+    char message[] = "Hello Nikhil\n";
 
     while (1)
     {

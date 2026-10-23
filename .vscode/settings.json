@@ -47,6 +47,15 @@
         ]
       },
       {
+        "name": "$(plug) Serial",
+        "tooltip": "Open the serial monitor (115200)",
+        "useVsCodeApi": true,
+        "command": "workbench.action.tasks.runTask",
+        "args": [
+          "Serial Monitor"
+        ]
+      },
+      {
         "name": "$(file-binary) Disasm",
         "tooltip": "Disassemble kernel8.elf",
         "useVsCodeApi": true,
